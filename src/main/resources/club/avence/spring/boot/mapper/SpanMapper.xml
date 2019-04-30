@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.avence.spring.boot.mapper.SpanMapper">
+  <resultMap id="BaseResultMap" type="club.avence.spring.boot.model.Span">
+    <id column="trace_id_high" jdbcType="BIGINT" property="traceIdHigh" />
+    <id column="trace_id" jdbcType="BIGINT" property="traceId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="remote_service_name" jdbcType="VARCHAR" property="remoteServiceName" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="debug" jdbcType="BIT" property="debug" />
+    <result column="start_ts" jdbcType="BIGINT" property="startTs" />
+    <result column="duration" jdbcType="BIGINT" property="duration" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    trace_id_high, trace_id, id, name, remote_service_name, parent_id, debug, start_ts, 
+    duration
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="club.avence.spring.boot.model.SpanKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from zipkin_spans
+    where trace_id_high = #{traceIdHigh,jdbcType=BIGINT}
+      and trace_id = #{traceId,jdbcType=BIGINT}
+      and id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="club.avence.spring.boot.model.SpanKey">
+    delete from zipkin_spans
+    where trace_id_high = #{traceIdHigh,jdbcType=BIGINT}
+      and trace_id = #{traceId,jdbcType=BIGINT}
+      and id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="club.avence.spring.boot.model.Span">
+    insert into zipkin_spans (trace_id_high, trace_id, id, 
+      name, remote_service_name, parent_id, 
+      debug, start_ts, duration)
+    values (#{traceIdHigh,jdbcType=BIGINT}, #{traceId,jdbcType=BIGINT}, #{id,jdbcType=BIGINT}, 
+      #{name,jdbcType=VARCHAR}, #{remoteServiceName,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT}, 
+      #{debug,jdbcType=BIT}, #{startTs,jdbcType=BIGINT}, #{duration,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="club.avence.spring.boot.model.Span">
+    insert into zipkin_spans
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="traceIdHigh != null">
+        trace_id_high,
+      </if>
+      <if test="traceId != null">
+        trace_id,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="remoteServiceName != null">
+        remote_service_name,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="debug != null">
+        debug,
+      </if>
+      <if test="startTs != null">
+        start_ts,
+      </if>
+      <if test="duration != null">
+        duration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="traceIdHigh != null">
+        #{traceIdHigh,jdbcType=BIGINT},
+      </if>
+      <if test="traceId != null">
+        #{traceId,jdbcType=BIGINT},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteServiceName != null">
+        #{remoteServiceName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="debug != null">
+        #{debug,jdbcType=BIT},
+      </if>
+      <if test="startTs != null">
+        #{startTs,jdbcType=BIGINT},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="club.avence.spring.boot.model.Span">
+    update zipkin_spans
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteServiceName != null">
+        remote_service_name = #{remoteServiceName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="debug != null">
+        debug = #{debug,jdbcType=BIT},
+      </if>
+      <if test="startTs != null">
+        start_ts = #{startTs,jdbcType=BIGINT},
+      </if>
+      <if test="duration != null">
+        duration = #{duration,jdbcType=BIGINT},
+      </if>
+    </set>
+    where trace_id_high = #{traceIdHigh,jdbcType=BIGINT}
+      and trace_id = #{traceId,jdbcType=BIGINT}
+      and id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="club.avence.spring.boot.model.Span">
+    update zipkin_spans
+    set name = #{name,jdbcType=VARCHAR},
+      remote_service_name = #{remoteServiceName,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=BIGINT},
+      debug = #{debug,jdbcType=BIT},
+      start_ts = #{startTs,jdbcType=BIGINT},
+      duration = #{duration,jdbcType=BIGINT}
+    where trace_id_high = #{traceIdHigh,jdbcType=BIGINT}
+      and trace_id = #{traceId,jdbcType=BIGINT}
+      and id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
