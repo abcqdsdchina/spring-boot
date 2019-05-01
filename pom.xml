@@ -7,6 +7,7 @@
     <groupId>club.avence.spring.boot</groupId>
     <artifactId>spring-boot</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <name>spring-boot</name>
     <url>http://www.example.com</url>
