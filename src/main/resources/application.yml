@@ -1,7 +1,13 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/zipkin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zipkin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia%2FShanghai
     username: root
     password: root
   rabbitmq:
@@ -13,3 +19,4 @@ spring:
     port: 6379
   thymeleaf:
     cache: false
+
