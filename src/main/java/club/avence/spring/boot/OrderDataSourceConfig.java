@@ -37,12 +37,12 @@ public class OrderDataSourceConfig {
         sqlSessionFactoryBean.setDataSource(dataSource);
         sqlSessionFactoryBean.setMapperLocations(
                 new PathMatchingResourcePatternResolver()
-                        .getResources("club.avence.spring.boot.mapper.order"));
+                        .getResources("classpath:club/avence/spring/boot/mapper/order/*.xml"));
         return sqlSessionFactoryBean.getObject();
     }
 
     @Bean
-    public SqlSessionTemplate productSqlSessionTemplate(@Qualifier("orderSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    public SqlSessionTemplate orderSqlSessionTemplate(@Qualifier("orderSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

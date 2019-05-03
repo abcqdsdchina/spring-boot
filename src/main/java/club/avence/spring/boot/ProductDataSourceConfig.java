@@ -37,7 +37,7 @@ public class ProductDataSourceConfig {
         sqlSessionFactoryBean.setDataSource(dataSource);
         sqlSessionFactoryBean.setMapperLocations(
                 new PathMatchingResourcePatternResolver()
-                        .getResources("club.avence.spring.boot.mapper.product"));
+                        .getResources("classpath:club/avence/spring/boot/mapper/product/*.xml"));
         return sqlSessionFactoryBean.getObject();
     }
 
