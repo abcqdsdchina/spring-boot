@@ -10,6 +10,14 @@ spring:
     url: jdbc:mysql://localhost:3306/zipkin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia%2FShanghai
     username: root
     password: root
+    product:
+      url: jdbc:mysql://localhost:3306/products?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia%2FShanghai
+      username: root
+      password: root
+    order:
+      url: jdbc:mysql://localhost:3306/orders?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia%2FShanghai
+      username: root
+      password: root
   rabbitmq:
     addresses: 172.17.0.2:5672
     username: admin

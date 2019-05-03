@@ -75,6 +75,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jta-atomikos</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
@@ -149,7 +153,7 @@
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>${mybatis-generator-maven-plugin.version}</version>
                 <configuration>
-                    <configurationFile>${basedir}/src/main/resources/mybatis/generator.xml</configurationFile>
+                    <configurationFile>${basedir}/src/main/resources/mybatis/generator-product.xml</configurationFile>
                     <overwrite>false</overwrite>
                     <verbose>true</verbose>
                 </configuration>
