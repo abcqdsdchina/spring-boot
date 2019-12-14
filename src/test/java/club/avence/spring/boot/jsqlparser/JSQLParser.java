@@ -13,10 +13,11 @@ public class JSQLParser {
 
     @Test
     public void test() throws JSQLParserException {
-        Statement statement = CCJSqlParserUtil.parse("SELECT * FROM MY_TABLE1");
+        Statement statement = CCJSqlParserUtil.parse("SELECT * FROM MY_TABLE1 WHERE z = ?");
         Select selectStatement = (Select) statement;
         TablesNamesFinder tablesNamesFinder = new TablesNamesFinder();
         List<String> tableList = tablesNamesFinder.getTableList(selectStatement);
+        System.out.println(tableList);
     }
 
 }
